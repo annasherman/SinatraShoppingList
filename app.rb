@@ -2,11 +2,7 @@ require 'bundler'
 Bundler.require
 
 get '/' do
-  "Hello world"
-end
-
-get '/home' do
- erb :home
+  erb :home
 end
 
 get '/login' do
