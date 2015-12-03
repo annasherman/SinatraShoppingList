@@ -1,6 +1,20 @@
 <h1>New user?</h1>
 <h3>Register here:</h3>
 
+<% if @message %>
+<p><%= @message %></p>
+<% end %>
+
+<form class ="register" action="/register" method="post">
+  <input type="text" name="user_name" value="" placeholder="username"><br>
+  <input type="text" name="user_email" placeholder="Your Email">
+  <input type="password" name="password" value="" placeholder="Password"><br>
+  <input type="submit" value="Click Here">
+  <!-- names are keys in the params hash. values are vals. -->
+</form>
+
+
+
 <!--Wireframe 1
 Users email
 Password
@@ -21,7 +35,7 @@ Congrats and welcome back messsage, redirect to shopping list
 or ERROR when logging in  -->
 
 <!--
-Wireframe 3 - Shopping List 
+Wireframe 3 - Shopping List
 A list all view for shoping items
 Create a shpping item
 Confirm deletion of a shopping item.  -->

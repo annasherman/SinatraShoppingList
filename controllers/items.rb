@@ -5,14 +5,6 @@ class ItemsController < ApplicationController
     erb :home
   end
 
-  get '/login' do
-    erb :login
-  end
-
-  get '/registration' do
-    erb :registration
-  end
-
   post '/create' do
     @item = Item.new
     @item.name = params[:name]
