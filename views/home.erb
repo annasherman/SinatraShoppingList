@@ -1,5 +1,13 @@
-<h1>What's new</h1>
-<h2>Where to shop</h2>
-<h3>Purple elephant</h3>
+<form action="/create" method="post">
+  <input type="text" name="name" placeholder="Name">
+  <input type="text" name="quantity" placeholder="Quantity">
+  <input type="Submit" value="Add an item">
+</form>
 
-How do you automatically pull down changes from GitHub???
+
+<% @items.each do |item|%>
+<p><%=item.name%></p>
+<p><%=item.quantity%></p>
+<a href='/update/<%= item.id %>'>Update</a>
+<a href='/destroy/<%= item.id %>'>Destroy</a>
+<% end %>

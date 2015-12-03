@@ -1,3 +1,11 @@
 body{
   background-color: rgba(108, 187, 138, 0.73);
+  text-align: center;
+  margin: 0 auto;
+  padding: 50px;
+}
+
+input {
+  height: 20px;
+
 }

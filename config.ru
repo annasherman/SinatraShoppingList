@@ -1,3 +1,8 @@
-require './app'
+require 'sinatra/base'
 
-run Sinatra::Application
+require './controllers/application'
+require './controllers/items'
+
+require './models/items'
+
+map ('/') { run ItemsController } 
