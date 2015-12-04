@@ -14,9 +14,15 @@ class UsersController < ApplicationController
     erb :login
   end
 
-  post '/submit_login' do
-    @message = "Thank you for logging in"
-    erb :home
+  post '/login' do
+    user = Account.authenticate(params[:user_name],params[:password])
+    if user
+      session[:current_user] = user
+      redirect '/'
+    # @message = "Thank you for logging in"
+    else
+      @message = 'Your username or password is incorrect.'
+    end
   end
 
   get '/registration' do
@@ -29,13 +35,18 @@ class UsersController < ApplicationController
     #if not create a new user
     if user
       @message = "The user already exists!"
+      erb :login
     else #create new user
       user = Account.create(user_email: params[:user_email], user_name: params[:user_name], password: params[:password])
 
       session[:current_user] = user
-
       redirect '/'
     end
+  end
+
+  get '/logout' do
+    session[:current_user] = nil
+    redirect '/'
   end
 
 

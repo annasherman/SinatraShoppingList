@@ -1,8 +1,15 @@
-<% if @message %>
-  <strong><%= @message %></strong>
+<% if session[:current_user] %>
+  <strong>Welcome <%= session[:current_user].user_name %></strong>
+  <a href="/users/logout">Log Out</a>
 <% end %>
 
-<a href="/users/registration">Register</a>
+<% if !session[:current_user] %>
+<a href='/users/registration'>Register</a>
+<a href='/users/login'>Login</a>
+<% end %>
+<br>
+<br>
+
 
 
 <form action="/create" method="post">
@@ -12,9 +19,14 @@
 </form>
 
 
+<div class="container">
+
+
 <% @items.each do |item|%>
-<p><%=item.name%></p>
-<p><%=item.quantity%></p>
+<p class="item"><%=item.name%>
+<%=item.quantity%></p>
 <a href='/update/<%= item.id %>'>Update</a>
 <a href='/destroy/<%= item.id %>'>Destroy</a>
 <% end %>
+
+</div>
